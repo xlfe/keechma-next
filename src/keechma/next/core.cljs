@@ -532,7 +532,7 @@
     (let [deps-state (get-controller-derived-deps-state @app-state* controller-name)
           state      (ctrl/stop instance params @state* deps-state)]
       (reset! state* state)
-      (swap! app-state* assoc-in [:app-db controller-name] {:state state}))
+      (swap! app-state* assoc-in [:app-db controller-name] {:state state :instance instance}))
     (ctrl/terminate instance)))
 
 (defn controller-on-deps-change! [app-state* controller-name]
